@@ -93,3 +93,7 @@ After a successful sync, the module caches the latest feed in IndexedDB and can 
 ```bash
 python scripts/validate_feed.py
 ```
+
+## Current editorial review queue
+
+The researched starter edition for **8 November 2026** is stored in [`review-queue/2026-11-08.json`](review-queue/2026-11-08.json). It contains seven candidates and 20 draft MCQs for the 4–7 November coverage window. These candidates are **not yet in the live feed**: they are marked `pending-human-approval` so the editor can verify the source details and solve every MCQ before publication. See [`review-queue/README.md`](review-queue/README.md) for the approval process.
