@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Current Affairs | Tomato</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1220;--panel:#172235;--line:#2b3a52;--muted:#9aabc2;--accent:#38bdf8;--good:#10b981;--bad:#ef4444}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#f8fafc;font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;padding:16px}
+.wrap{max-width:760px;margin:auto;display:grid;gap:14px}.top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+h1{font-size:1.45rem;margin:0;color:var(--accent)}h2{font-size:1.1rem;margin:0 0 8px}p{margin:6px 0;color:#d6e0ee}
+.muted,.meta{color:var(--muted);font-size:.82rem}.panel,.article,.question{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+button,select,input{font:inherit;border-radius:10px;border:1px solid var(--line);padding:10px 12px;background:#111c2d;color:#f8fafc}
+button{cursor:pointer;font-weight:650}button.primary{background:#0369a1;border-color:#0284c7}button:disabled{opacity:.5;cursor:not-allowed}
+input{min-width:0;flex:1;width:100%}.chips{display:flex;gap:7px;overflow:auto;padding:2px 0}.filter-label{font-size:.76rem;color:var(--muted);margin:10px 0 4px}
+.chip{white-space:nowrap;font-size:.83rem}.chip.active{background:#075985;border-color:#0ea5e9}
+.article h3{margin:5px 0;font-size:1.02rem}.article a{color:#7dd3fc}.article .summary{white-space:pre-wrap}
+.tag{display:inline-block;border:1px solid #38506c;border-radius:99px;padding:2px 8px;margin:3px 4px 0 0;color:#c6d6e8;font-size:.72rem}
+.answer{display:block;width:100%;text-align:left;margin:7px 0}.answer.correct{border-color:var(--good);background:#064e3b}.answer.wrong{border-color:var(--bad);background:#7f1d1d}
+#status{font-size:.82rem;color:var(--muted)}#explanation{padding:10px;background:#0f1b2c;border-radius:9px;margin-top:8px}
+.empty{text-align:center;padding:24px;color:var(--muted)}details summary{cursor:pointer;color:#bae6fd}
+small{color:var(--muted)}.hidden{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div><h1>📰 Current Affairs</h1><div class="muted">Tomato learning module</div></div>
+    <button id="refresh" class="primary">↻ Sync</button>
+  </div>
+  <div class="panel">
+    <div class="row" style="justify-content:space-between"><b>Daily revision</b><span id="status">Loading saved content…</span></div>
+    <div class="muted" id="updated">No feed synced yet</div>
+    <details style="margin-top:10px"><summary>Feed connection settings</summary>
+      <p class="muted">Paste the GitHub Pages JSON address after publishing your repository. It is saved on this device.</p>
+      <div class="row"><input id="feedUrl" type="url" placeholder="https://username.github.io/repository/content/current-affairs.json"><button id="saveUrl">Save</button></div>
+    </details>
+  </div>
+  <div class="panel">
+    <input id="search" type="search" placeholder="Search topics, exams or keywords…">
+    <div class="filter-label">Exam</div><div class="chips" id="exams"></div>
+    <div class="filter-label">Category</div><div class="chips" id="categories"></div>
+  </div>
+  <div class="row"><button id="showArticles" class="primary">Read articles</button><button id="showQuiz">Practice MCQs</button><button id="showSaved">★ Bookmarks</button></div>
+  <section id="articles"></section>
+  <section id="quiz" class="hidden"></section>
+</div>
+<script>
+(() => {
+  "use strict";
+  const DB_NAME = "tomato-current-affairs";
+  const STORE = "cache";
+  const DEFAULT_URL = "";
+  const CATEGORIES = ["All","National Affairs","International Affairs","Economy","Science & Technology","Defence","Environment","Sports","Awards & Appointments"];
+  let feed = {schemaVersion:1,generatedAt:null,articles:[]};
+  let category = "All", examFilter = "All Exams", mode = "articles", savedOnly = false, quizQueue = [], qi = 0, score = 0;
+  const EXAMS = ["All Exams", "SSC", "RRB"];
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  function db(){return new Promise((resolve,reject)=>{const r=indexedDB.open(DB_NAME,1);r.onupgradeneeded=()=>r.result.createObjectStore(STORE);r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);});}
+  async function cacheSet(value){const d=await db();return new Promise((resolve,reject)=>{const t=d.transaction(STORE,"readwrite");t.objectStore(STORE).put(value,"feed");t.oncomplete=resolve;t.onerror=()=>reject(t.error);});}
+  async function cacheGet(){const d=await db();return new Promise((resolve,reject)=>{const r=d.transaction(STORE).objectStore(STORE).get("feed");r.onsuccess=()=>resolve(r.result||null);r.onerror=()=>reject(r.error);});}
+  function savedIds(){try{return JSON.parse(localStorage.getItem("tm_ca_saved")||"[]")}catch{return []}}
+  function toggleSaved(id){const s=new Set(savedIds());s.has(id)?s.delete(id):s.add(id);localStorage.setItem("tm_ca_saved",JSON.stringify([...s]));render();}
+  function url(){return localStorage.getItem("tm_ca_feed_url")||DEFAULT_URL;}
+  function setStatus(s){$("status").textContent=s;}
+  function validate(data){
+    if(!data || data.schemaVersion!==1 || !Array.isArray(data.articles)) throw new Error("Feed format is not supported.");
+    const ids=new Set();
+    for(const a of data.articles){
+      if(!a.id||ids.has(a.id)||!a.title||!a.summary||!a.sourceName||!/^https:\/\//.test(a.sourceUrl||"")||!Array.isArray(a.questions)) throw new Error("An article is missing required fields or has a duplicate ID.");
+      ids.add(a.id);
+      if(!Array.isArray(a.examTags)||!a.examTags.length||a.examTags.some(t=>!["SSC","RRB"].includes(t))) throw new Error("An article has invalid exam tags; only SSC and RRB are supported.");
+      const review=a.editorialReview;
+      if(!review||review.status!=="approved"||!review.reviewer||!review.checkedAt) throw new Error("An article has not passed the editorial approval gate.");
+      const cross=Array.isArray(review.crossCheckSources)?review.crossCheckSources:[];
+      const independent=cross.some(x=>x&&x.sourceUrl&&(()=>{try{return new URL(x.sourceUrl).hostname!==new URL(a.sourceUrl).hostname}catch{return false}})());
+      if(!independent&&!(typeof review.singleSourceJustification==="string"&&review.singleSourceJustification.trim().length>=20)) throw new Error("An article needs independent corroboration or a documented single-source justification.");
+      for(const q of a.questions){
+        if(!q.question||!Array.isArray(q.options)||q.options.length!==4||new Set(q.options.map(x=>String(x).trim().toLowerCase())).size!==4||![0,1,2,3].includes(q.answer)||!q.explanation||q.reviewed!==true) throw new Error("An MCQ is invalid or has not been individually reviewed.");
+      }
+    }
+    return data;
+  }
+  async function sync(){
+    const u=url();
+    if(!u){setStatus("Add your feed URL in settings");return;}
+    setStatus("Syncing…");
+    try{
+      const res=await fetch(u,{cache:"no-store"});
+      if(!res.ok)throw new Error("Server returned "+res.status);
+      const next=validate(await res.json());
+      feed=next;await cacheSet(next);setStatus("Synced · "+next.articles.length+" articles");
+      $("updated").textContent="Feed updated: "+new Date(next.generatedAt||Date.now()).toLocaleString();
+      render();
+    }catch(e){setStatus("Offline / sync failed — showing saved content");$("updated").textContent=e.message;render();}
+  }
+  function renderCategories(){
+    $("categories").innerHTML=CATEGORIES.map(c=>`<button class="chip ${category===c?"active":""}" data-cat="${esc(c)}">${esc(c)}</button>`).join("");
+    $("exams").innerHTML=EXAMS.map(x=>`<button class="chip ${examFilter===x?"active":""}" data-exam="${esc(x)}">${esc(x)}</button>`).join("");
+  }
+  function filtered(){
+    const term=$("search").value.trim().toLowerCase(), saved=new Set(savedIds());
+    return feed.articles.filter(a=>(category==="All"||a.category===category)&&(examFilter==="All Exams"||(a.examTags||[]).includes(examFilter))&&(!savedOnly||saved.has(a.id))&&(!term||[a.title,a.summary,a.category,...(a.examTags||[])].join(" ").toLowerCase().includes(term)));
+  }
+  function renderArticles(){
+    const items=filtered();
+    $("articles").innerHTML=items.length?items.map(a=>`<article class="article">
+      <div class="meta">${esc(a.date)} · ${esc(a.category)}</div><h3>${esc(a.title)}</h3>
+      <div class="summary">${esc(a.summary)}</div>
+      <div>${(a.examTags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>
+      <div class="row" style="justify-content:space-between;margin-top:10px">
+        <small>Source: ${esc(a.sourceName)}</small><button data-save="${esc(a.id)}">${savedIds().includes(a.id)?"★ Saved":"☆ Save"}</button>
+      </div><a href="${esc(a.sourceUrl)}" target="_blank" rel="noopener noreferrer">Open original source ↗</a>
+    </article>`).join(""):`<div class="empty">${savedOnly?"No bookmarks yet.":"No articles match this filter yet."}<br><small>Sync after a reviewed feed has been published.</small></div>`;
+  }
+  function startQuiz(){
+    quizQueue=filtered().flatMap(a=>(a.questions||[]).map(q=>({...q,articleTitle:a.title,articleId:a.id})));
+    qi=0;score=0;mode="quiz";savedOnly=false;renderMode();
+    if(!quizQueue.length){$("quiz").innerHTML='<div class="empty">No MCQs available for this selection yet.</div>';return;}
+    renderQuestion();
+  }
+  function renderQuestion(){
+    const q=quizQueue[qi];
+    if(!q){$("quiz").innerHTML=`<div class="panel"><h2>Practice complete</h2><p>Score: ${score} / ${quizQueue.length}</p><button id="again" class="primary">Try again</button></div>`;return;}
+    $("quiz").innerHTML=`<div class="question"><div class="meta">Question ${qi+1} of ${quizQueue.length} · ${esc(q.articleTitle)}</div><h3>${esc(q.question)}</h3><div id="opts">${q.options.map((o,i)=>`<button class="answer" data-answer="${i}">${String.fromCharCode(65+i)}. ${esc(o)}</button>`).join("")}</div><div id="explanation" class="hidden"></div><div class="row" style="justify-content:space-between;margin-top:12px"><span id="qscore" class="muted">Score: ${score}</span><button id="next" class="primary hidden">Next question →</button></div></div>`;
+  }
+  function renderMode(){
+    $("articles").classList.toggle("hidden",mode!=="articles");
+    $("quiz").classList.toggle("hidden",mode!=="quiz");
+    $("showArticles").classList.toggle("primary",mode==="articles");
+    $("showQuiz").classList.toggle("primary",mode==="quiz");
+    $("showSaved").classList.toggle("primary",savedOnly);
+  }
+  function render(){renderCategories();renderMode();if(mode==="articles")renderArticles();}
+  $("categories").addEventListener("click",e=>{const b=e.target.closest("[data-cat]");if(!b)return;category=b.dataset.cat;render();});
+  $("exams").addEventListener("click",e=>{const b=e.target.closest("[data-exam]");if(!b)return;examFilter=b.dataset.exam;render();});
+  $("articles").addEventListener("click",e=>{const b=e.target.closest("[data-save]");if(b)toggleSaved(b.dataset.save);});
+  $("quiz").addEventListener("click",e=>{
+    const b=e.target.closest("[data-answer]");
+    if(b){const q=quizQueue[qi],choice=Number(b.dataset.answer);document.querySelectorAll("[data-answer]").forEach(x=>{x.disabled=true;if(Number(x.dataset.answer)===q.answer)x.classList.add("correct");else if(x===b)x.classList.add("wrong");});if(choice===q.answer)score++;$("qscore").textContent="Score: "+score;$("explanation").textContent=q.explanation;$("explanation").classList.remove("hidden");$("next").classList.remove("hidden");}
+    if(e.target.id==="next"){qi++;renderQuestion();}
+    if(e.target.id==="again")startQuiz();
+  });
+  $("showArticles").onclick=()=>{mode="articles";savedOnly=false;render();};
+  $("showQuiz").onclick=startQuiz;
+  $("showSaved").onclick=()=>{mode="articles";savedOnly=!savedOnly;render();};
+  $("search").addEventListener("input",render);
+  $("refresh").onclick=sync;
+  $("saveUrl").onclick=()=>{const u=$("feedUrl").value.trim();if(u&&!/^https:\/\/.+\.json(?:\?.*)?$/.test(u)){setStatus("Please enter an HTTPS JSON feed URL.");return;}localStorage.setItem("tm_ca_feed_url",u);setStatus("Feed URL saved");sync();};
+  $("feedUrl").value=url();
+  (async()=>{try{feed=validate(await cacheGet())||feed;setStatus("Saved feed loaded · "+feed.articles.length+" articles");$("updated").textContent=feed.generatedAt?"Last saved update: "+new Date(feed.generatedAt).toLocaleString():"No saved feed";}catch(e){setStatus("Ready to sync");}render();if(navigator.onLine)sync();})();
+})();
+</script>
+</body>
+</html>
