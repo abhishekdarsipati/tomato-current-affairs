@@ -1,0 +1,625 @@
+{
+  "editionDate": "2026-11-08",
+  "title": "SSC + RRB Current Affairs — Starter Edition",
+  "coverageWindow": "2026-11-04 to 2026-11-07",
+  "status": "pending-human-approval",
+  "preparedAt": "2026-11-08T21:00:00+05:30",
+  "scope": [
+    "SSC",
+    "RRB"
+  ],
+  "editorialNotice": "This is a reviewed candidate queue, not the live app feed. Do not copy items into content/current-affairs.json until a human editor has checked every key fact and every MCQ answer, then recorded approval in the live feed format.",
+  "selectionPrinciples": [
+    "Prioritise official government, regulator, ministry, statutory-body and issuing-organisation sources.",
+    "Use a second authoritative publication to cross-check the key details wherever available.",
+    "Use careful attribution when a figure is a ministry-reported sample or administrative total; do not generalise beyond the tested/recorded dataset.",
+    "Keep questions to facts explicitly supported by the primary source.",
+    "Exclude ambiguous, conflicting, weakly sourced or low-exam-value material."
+  ],
+  "articles": [
+    {
+      "articleId": "2026-11-04-vistar",
+      "publicationDate": "2026-11-04",
+      "category": "Economy",
+      "headline": "Cabinet approves the VISTAR scheme to upgrade India's official statistical system",
+      "examTags": [
+        "SSC",
+        "RRB"
+      ],
+      "relevance": "National scheme, ministry, acronym, outlay and scheme period are suitable for general-awareness revision.",
+      "summary": "On 4 November 2026, the Union Cabinet approved the Viksit Bharat Initiative for Statistical Transformation, Analytics & Research (VISTAR), a Central Sector Scheme for FY 2026–27 to FY 2030–31, with an outlay of ₹4,371.10 crore. The stated objective is to strengthen the official statistical system through more timely, granular, interoperable and AI-ready data, alongside survey execution, methodological research and digital transformation.",
+      "keyFacts": [
+        "Full form: Viksit Bharat Initiative for Statistical Transformation, Analytics & Research.",
+        "Type: Central Sector Scheme.",
+        "Period: FY 2026–27 to FY 2030–31.",
+        "Outlay: ₹4,371.10 crore.",
+        "Administrative scope: statistical and data-management activities of MoSPI."
+      ],
+      "primarySource": {
+        "sourceName": "Press Information Bureau — Ministry of Statistics & Programme Implementation",
+        "sourceUrl": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2332495&lang=2&reg=48"
+      },
+      "crossCheckSources": [
+        {
+          "sourceName": "Prime Minister's Office — Cabinet decision",
+          "sourceUrl": "https://www.pmindia.gov.in/en/news_updates/cabinet-approves-viksit-bharat-initiative-for-statistical-transformation-analytics-research-vistar-a-central-sector-scheme-for-the-period-2026-27-to-2030-31/?comment=disable",
+          "relationship": "Official Cabinet announcement publication; confirms the name, scheme period and exact outlay."
+        },
+        {
+          "sourceName": "Akashvani News",
+          "sourceUrl": "https://newsonair.gov.in/cabinet-approves-over-rs-4371-crore-vistar-scheme-to-modernise-indias-statistical-system/",
+          "relationship": "Public-broadcast report; corroborates the acronym, purpose and scheme period, while reporting the outlay rounded to over ₹4,371 crore."
+        }
+      ],
+      "editorialAssessment": {
+        "status": "pending-human-approval",
+        "reviewer": "ChatGPT research assistant — source comparison completed; not a human sign-off",
+        "checkedAt": "2026-11-08T21:00:00+05:30",
+        "checksPerformed": [
+          "Compared the acronym, scheme type, period and exact outlay against PIB and PMO.",
+          "Compared the scheme purpose and period against Akashvani.",
+          "Kept the exact outlay from the official Cabinet/PIB record rather than rounding."
+        ],
+        "notes": [
+          "Human editor must check the final wording and answer key before live publication."
+        ]
+      },
+      "draftMcqs": [
+        {
+          "question": "What is the full form of VISTAR, the scheme approved by the Union Cabinet in November 2026?",
+          "options": [
+            "Viksit Bharat Initiative for Statistical Transformation, Analytics & Research",
+            "Viksit Bharat Integrated Scheme for Technology and Agricultural Research",
+            "Vision for Indian Science, Technology and Administrative Reform",
+            "Viksit Bharat Initiative for Sustainable Trade and Revenue"
+          ],
+          "proposedAnswerIndex": 0,
+          "explanation": "The Cabinet/PIB release expands VISTAR as Viksit Bharat Initiative for Statistical Transformation, Analytics & Research.",
+          "answerVerification": "AI source comparison completed; human answer-key sign-off pending."
+        },
+        {
+          "question": "What is the approved financial outlay of the VISTAR scheme?",
+          "options": [
+            "₹4,371.10 crore",
+            "₹4,731.10 crore",
+            "₹4,137.10 crore",
+            "₹4,371.01 crore"
+          ],
+          "proposedAnswerIndex": 0,
+          "explanation": "The official Cabinet/PIB release specifies an outlay of ₹4,371.10 crore.",
+          "answerVerification": "AI source comparison completed; human answer-key sign-off pending."
+        }
+      ]
+    },
+    {
+      "articleId": "2026-11-04-grid-storage-vgf",
+      "publicationDate": "2026-11-04",
+      "category": "Economy",
+      "headline": "Cabinet approves ₹14,500-crore VGF scheme for 92 GWh of grid-scale energy storage",
+      "examTags": [
+        "SSC",
+        "RRB"
+      ],
+      "relevance": "Useful national energy-policy figures and basic distinctions between pumped storage and battery storage.",
+      "summary": "On 4 November 2026, the Union Cabinet approved a Viability Gap Funding (VGF) scheme with total financial support of ₹14,500 crore for the development of 92 GWh of yet-to-be-commissioned grid-scale energy-storage capacity during FY 2026–27 to FY 2030–31. The planned mix is 60 GWh of pumped-storage projects, 30 GWh of Battery Energy Storage Systems (BESS) and 2 GWh through emerging storage technologies.",
+      "keyFacts": [
+        "Scheme: Viability Gap Funding (VGF) Scheme for Development of Grid-Scale Energy Storage Systems.",
+        "Total financial support: ₹14,500 crore.",
+        "Target new capacity: 92 GWh.",
+        "Break-up: 60 GWh pumped storage, 30 GWh BESS, 2 GWh emerging technologies.",
+        "Scheme period: FY 2026–27 to FY 2030–31."
+      ],
+      "primarySource": {
+        "sourceName": "Press Information Bureau — Ministry of Power",
+        "sourceUrl": "https://www.pib.gov.in/PressReleaseIframePage.aspx?PRID=2332486&lang=1&reg=48"
+      },
+      "crossCheckSources": [
+        {
+          "sourceName": "Prime Minister's Office — Cabinet decision",
+          "sourceUrl": "https://www.pmindia.gov.in/en/news_updates/cabinet-approves-rs-14500-crore-viability-gap-funding-scheme-for-development-of-92-gwh-grid-scale-energy-storage-systems/?comment=disable",
+          "relationship": "Official Cabinet announcement publication; confirms the outlay, 92 GWh target and capacity break-up."
+        },
+        {
+          "sourceName": "DD India",
+          "sourceUrl": "https://ddindia.co.in/2026/11/cabinet-approves-%E2%82%B914500-crore-scheme-to-develop-92-gwh-grid-scale-energy-storage-capacity/",
+          "relationship": "Public-broadcast report; independently published summary confirms the outlay, capacity total and three-part capacity break-up."
+        }
+      ],
+      "editorialAssessment": {
+        "status": "pending-human-approval",
+        "reviewer": "ChatGPT research assistant — source comparison completed; not a human sign-off",
+        "checkedAt": "2026-11-08T21:00:00+05:30",
+        "checksPerformed": [
+          "Matched the ₹14,500 crore outlay and 92 GWh capacity against PIB, PMO and DD India.",
+          "Checked that 60 + 30 + 2 equals 92 GWh.",
+          "Kept pumped-storage projects distinct from BESS."
+        ],
+        "notes": [
+          "Human editor must check the final wording and answer keys before live publication."
+        ]
+      },
+      "draftMcqs": [
+        {
+          "question": "What total grid-scale energy-storage capacity is targeted under the approved VGF scheme?",
+          "options": [
+            "92 GWh",
+            "82 GWh",
+            "411 GWh",
+            "60 GWh"
+          ],
+          "proposedAnswerIndex": 0,
+          "explanation": "The approved scheme aims to support 92 GWh of yet-to-be-commissioned grid-scale energy-storage capacity. The 411 GWh figure refers to a broader projected requirement by 2031–32, not the capacity under this scheme.",
+          "answerVerification": "AI source comparison completed; human answer-key sign-off pending."
+        },
+        {
+          "question": "Which component receives the largest capacity allocation under the scheme?",
+          "options": [
+            "Battery Energy Storage Systems — 30 GWh",
+            "Pumped-storage projects — 60 GWh",
+            "Emerging technologies — 2 GWh",
+            "All three components receive equal capacity"
+          ],
+          "proposedAnswerIndex": 1,
+          "explanation": "The official break-up is 60 GWh for pumped-storage projects, 30 GWh for BESS and 2 GWh for emerging technologies.",
+          "answerVerification": "AI source comparison completed; human answer-key sign-off pending."
+        },
+        {
+          "question": "What is the total financial support approved for the grid-scale energy-storage VGF scheme?",
+          "options": [
+            "₹14,500 crore",
+            "₹4,371.10 crore",
+            "₹2,814 crore",
+            "₹3,788.04 crore"
+          ],
+          "proposedAnswerIndex": 0,
+          "explanation": "The Union Cabinet approved total financial support of ₹14,500 crore for the scheme.",
+          "answerVerification": "AI source comparison completed; human answer-key sign-off pending."
+        }
+      ]
+    },
+    {
+      "articleId": "2026-11-04-critical-mineral-capex",
+      "publicationDate": "2026-11-04",
+      "category": "Science & Technology",
+      "headline": "Cabinet approves ₹2,814-crore support scheme for domestic lithium and nickel processing",
+      "examTags": [
+        "SSC",
+        "RRB"
+      ],
+      "relevance": "Useful for critical minerals, domestic processing, clean-energy supply chains and scheme figures.",
+      "summary": "On 4 November 2026, the Union Cabinet approved the Capex Support Scheme to Promote Critical Mineral Processing, with a financial outlay of ₹2,814 crore over FY 2026–27 to FY 2030–31. The scheme provides a capital subsidy of 30% of eligible investment for four processing plants: two lithium plants with a minimum capacity of 30 kt each and two nickel plants with a minimum capacity of 50 kt each. Cobalt is expected to be recovered as a by-product of nickel production.",
+      "keyFacts": [
+        "Outlay: ₹2,814 crore.",
+        "Period: FY 2026–27 to FY 2030–31.",
+        "Capital subsidy: 30% of eligible investment.",
+        "Four plants: two lithium plants (minimum 30 kt each) and two nickel plants (minimum 50 kt each).",
+        "Cobalt is expected as a by-product of nickel production; the scheme's named processing targets are lithium and nickel."
+      ],
+      "primarySource": {
+        "sourceName": "Press Information Bureau — Ministry of Mines",
+        "sourceUrl": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2332490&lang=1&reg=3"
+      },
+      "crossCheckSources": [
+        {
+          "sourceName": "Prime Minister's Office — Cabinet decision",
+          "sourceUrl": "https://www.pmindia.gov.in/en/news_updates/cabinet-approves-capex-support-scheme-to-promote-critical-mineral-processing-with-an-outlay-of-rs-2814-crore-for-lithium-and-nickel-processing/?comment=disable",
+          "relationship": "Official Cabinet announcement publication; confirms the outlay, five-year scheme period, subsidy, minerals and plant capacities. This is an official government publication, not independent news reporting."
+        },
+        {
+          "sourceName": "Akashvani News",
+          "sourceUrl": "https://newsonair.gov.in/cabinet-approves-over-rs-4371-crore-vistar-scheme-to-modernise-indias-statistical-system/",
+          "relationship": "Public-broadcast summary confirms the Cabinet's ₹2,814-crore critical-mineral scheme approval; detailed plant parameters are taken from the official PIB/PMO records."
+        }
+      ],
+      "editorialAssessment": {
+        "status": "pending-human-approval",
+        "reviewer": "ChatGPT research assistant — source comparison completed; not a human sign-off",
+        "checkedAt": "2026-11-08T21:00:00+05:30",
+        "checksPerformed": [
+          "Matched the scheme outlay and period against PIB and PMO.",
+          "Matched the target minerals, subsidy percentage and plant capacities against the PMO Cabinet decision.",
+          "Kept cobalt described as a by-product rather than a third main processing target."
+        ],
+        "notes": [
+          "The plant capacity and subsidy figures are grounded in the official PIB/PMO Cabinet publications; the secondary broadcast summary only confirms the scheme approval and outlay.",
+          "Human editor should verify the four-plant break-up and units before approval."
+        ]
+      },
+      "draftMcqs": [
+        {
+          "question": "Which two minerals are the main processing targets specified under the Capex Support Scheme?",
+          "options": [
+            "Lithium and nickel",
+            "Lithium and cobalt",
+            "Nickel and iron ore",
+            "Copper and cobalt"
+          ],
+          "proposedAnswerIndex": 0,
+          "explanation": "The scheme specifies lithium and nickel processing plants. Cobalt is expected to be recovered as a by-product of nickel production.",
+          "answerVerification": "AI source comparison completed; human answer-key sign-off pending."
+        },
+        {
+          "question": "What percentage of eligible investment is provided as capital subsidy under the scheme?",
+          "options": [
+            "20%",
+            "25%",
+            "30%",
+            "40%"
+          ],
+          "proposedAnswerIndex": 2,
+          "explanation": "The scheme provides a capital subsidy equal to 30% of eligible investment.",
+          "answerVerification": "AI source comparison completed; human answer-key sign-off pending."
+        },
+        {
+          "question": "How many processing plants are envisaged under the scheme?",
+          "options": [
+            "Two",
+            "Three",
+            "Four",
+            "Six"
+          ],
+          "proposedAnswerIndex": 2,
+          "explanation": "The scheme envisages four plants in total: two lithium-processing plants and two nickel-processing plants.",
+          "answerVerification": "AI source comparison completed; human answer-key sign-off pending."
+        }
+      ]
+    },
+    {
+      "articleId": "2026-11-04-ftsc-extension",
+      "publicationDate": "2026-11-04",
+      "category": "National Affairs",
+      "headline": "Cabinet extends the Fast Track Special Courts scheme for five more years",
+      "examTags": [
+        "SSC",
+        "RRB"
+      ],
+      "relevance": "A major Central Sector/Centrally Sponsored justice initiative with a clear duration, outlay and target number of courts.",
+      "summary": "On 4 November 2026, the Union Cabinet approved continuation of the Centrally Sponsored Scheme for Fast Track Special Courts (FTSCs), including exclusive POCSO Courts, for five years from 1 April 2026 to 31 March 2031. The total financial outlay is ₹3,788.04 crore. The extended scheme provides for 850 FTSCs, including exclusive POCSO Courts, across participating States and Union Territories.",
+      "keyFacts": [
+        "Scheme: Centrally Sponsored Scheme for Fast Track Special Courts (FTSCs), including exclusive POCSO Courts.",
+        "Continuation period: 1 April 2026 to 31 March 2031 (five years).",
+        "Total outlay: ₹3,788.04 crore.",
+        "Proposed number: 850 FTSCs.",
+        "Central share: ₹2,353.15 crore; State/UT share: ₹1,434.89 crore."
+      ],
+      "primarySource": {
+        "sourceName": "Press Information Bureau — Ministry of Law and Justice",
+        "sourceUrl": "https://www.pib.gov.in/PressReleseDetailm.aspx?PRID=2332498&lang=1&reg=1"
+      },
+      "crossCheckSources": [
+        {
+          "sourceName": "Prime Minister's Office — Cabinet decision",
+          "sourceUrl": "https://www.pmindia.gov.in/en/news_updates/cabinet-approves-continuation-of-the-centrally-sponsored-scheme-for-fast-track-special-courts-ftscs-for-expeditious-trial-of-cases-of-rape-and-pocso-protection-of-children-from-sexual-offences-act/?comment=disable",
+          "relationship": "Official Cabinet announcement publication; confirms the period, total outlay and 850-court provision."
+        },
+        {
+          "sourceName": "DD India",
+          "sourceUrl": "https://ddindia.co.in/2026/11/cabinet-approves-%E2%82%B93788-crore-for-fast-track-courts-to-expedite-rape-pocso-trials/",
+          "relationship": "Public-broadcast report; corroborates the five-year extension, total outlay and target of 850 courts."
+        }
+      ],
+      "editorialAssessment": {
+        "status": "pending-human-approval",
+        "reviewer": "ChatGPT research assistant — source comparison completed; not a human sign-off",
+        "checkedAt": "2026-11-08T21:00:00+05:30",
+        "checksPerformed": [
+          "Matched the exact start/end dates and total outlay across PIB, PMO and DD India.",
+          "Checked that the Central and State/UT shares sum to the total outlay.",
+          "Kept the scheme classified as a Centrally Sponsored Scheme, as stated in the release."
+        ],
+        "notes": [
+          "Human editor must check the scheme classification and figures before live publication."
+        ]
+      },
+      "draftMcqs": [
+        {
+          "question": "Until which date has the Fast Track Special Courts scheme been extended?",
+          "options": [
+            "31 March 2028",
+            "31 March 2029",
+            "31 March 2030",
+            "31 March 2031"
+          ],
+          "proposedAnswerIndex": 3,
+          "explanation": "The continuation period approved by the Cabinet runs from 1 April 2026 to 31 March 2031.",
+          "answerVerification": "AI source comparison completed; human answer-key sign-off pending."
+        },
+        {
+          "question": "How many Fast Track Special Courts are proposed under the extended scheme?",
+          "options": [
+            "779",
+            "800",
+            "850",
+            "900"
+          ],
+          "proposedAnswerIndex": 2,
+          "explanation": "The extended scheme provides for operationalisation of 850 FTSCs, including exclusive POCSO Courts.",
+          "answerVerification": "AI source comparison completed; human answer-key sign-off pending."
+        },
+        {
+          "question": "What is the total financial outlay approved for continuation of the FTSC scheme?",
+          "options": [
+            "₹2,353.15 crore",
+            "₹3,788.04 crore",
+            "₹1,434.89 crore",
+            "₹4,371.10 crore"
+          ],
+          "proposedAnswerIndex": 1,
+          "explanation": "The total outlay is ₹3,788.04 crore; ₹2,353.15 crore is the Central share and ₹1,434.89 crore is the State/UT share.",
+          "answerVerification": "AI source comparison completed; human answer-key sign-off pending."
+        }
+      ]
+    },
+    {
+      "articleId": "2026-11-04-railway-freight",
+      "publicationDate": "2026-11-04",
+      "category": "National Affairs",
+      "headline": "Indian Railways records 145.07 million tonnes of freight loading in October 2026",
+      "examTags": [
+        "RRB",
+        "SSC"
+      ],
+      "relevance": "Directly relevant to RRB railway awareness and useful for SSC current-affairs figures.",
+      "summary": "The Ministry of Railways reported that Indian Railways loaded 145.07 million tonnes of freight in October 2026, its highest-ever freight loading for an October. The comparable figure for October 2025 was 133.93 million tonnes, so the reported year-on-year increase was 8.32%. For April–October 2026, cumulative freight loading was 978.78 million tonnes, up 4.67% from 935.10 million tonnes in the corresponding period a year earlier.",
+      "keyFacts": [
+        "October 2026 freight loading: 145.07 million tonnes.",
+        "October 2025 comparator: 133.93 million tonnes.",
+        "Year-on-year growth: 8.32%.",
+        "April–October 2026 cumulative freight loading: 978.78 million tonnes.",
+        "April–October year-on-year growth: 4.67%."
+      ],
+      "primarySource": {
+        "sourceName": "Press Information Bureau — Ministry of Railways",
+        "sourceUrl": "https://www.pib.gov.in/PressReleseDetailm.aspx?PRID=2332375&lang=1&reg=3"
+      },
+      "crossCheckSources": [
+        {
+          "sourceName": "Business Standard",
+          "sourceUrl": "https://www.business-standard.com/india-news/indian-railways-freight-loading-rises-8-3-to-145-07-million-tonnes-in-oct-126110401805_1.html",
+          "relationship": "Independent news report; confirms the October 2026 loading figure and rounded year-on-year growth."
+        },
+        {
+          "sourceName": "Indian Railway Board — Press Release Archive",
+          "sourceUrl": "https://rb.indianrailways.gov.in/documents/press-release",
+          "relationship": "Official Railway Board archive lists the same release and its 4 November 2026 publication date; it is an issuer-side record, not an independent numeric check."
+        }
+      ],
+      "editorialAssessment": {
+        "status": "pending-human-approval",
+        "reviewer": "ChatGPT research assistant — source comparison completed; not a human sign-off",
+        "checkedAt": "2026-11-08T21:00:00+05:30",
+        "checksPerformed": [
+          "Matched 145.07 million tonnes and rounded 8.3% growth against Business Standard.",
+          "Matched the exact 8.32% and 133.93 million-tonne comparator against the PIB release.",
+          "Kept the October monthly total distinct from the April–October cumulative total."
+        ],
+        "notes": [
+          "Business Standard reports rounded 8.3%; use the official release's 8.32% when an exact percentage is required."
+        ]
+      },
+      "draftMcqs": [
+        {
+          "question": "How much freight did Indian Railways load in October 2026, according to the Ministry of Railways?",
+          "options": [
+            "133.93 million tonnes",
+            "145.07 million tonnes",
+            "978.78 million tonnes",
+            "935.10 million tonnes"
+          ],
+          "proposedAnswerIndex": 1,
+          "explanation": "The October 2026 monthly figure was 145.07 million tonnes. The 978.78 million-tonne figure is the cumulative April–October total.",
+          "answerVerification": "AI source comparison completed; human answer-key sign-off pending."
+        },
+        {
+          "question": "What year-on-year growth in freight loading did Indian Railways report for October 2026?",
+          "options": [
+            "4.67%",
+            "6.30%",
+            "8.32%",
+            "19.50%"
+          ],
+          "proposedAnswerIndex": 2,
+          "explanation": "Freight loading rose from 133.93 million tonnes in October 2025 to 145.07 million tonnes in October 2026, a reported increase of 8.32%.",
+          "answerVerification": "AI source comparison completed; human answer-key sign-off pending."
+        }
+      ]
+    },
+    {
+      "articleId": "2026-11-05-pralay-test",
+      "publicationDate": "2026-11-05",
+      "category": "Defence",
+      "headline": "DRDO successfully flight-tests the quasi-ballistic missile Pralay off the Odisha coast",
+      "examTags": [
+        "SSC",
+        "RRB"
+      ],
+      "relevance": "Defence technology and missile classification are recurring general-awareness themes.",
+      "summary": "On 5 November 2026, the Defence Research and Development Organisation (DRDO) successfully flight-tested the indigenously developed quasi-ballistic missile Pralay from Dr APJ Abdul Kalam Island off the Odisha coast, at about 11:10 a.m., as part of user-evaluation trials. The Ministry of Defence said all test objectives were met. Research Centre Imarat, Hyderabad, along with other DRDO laboratories, developed the missile; Bharat Dynamics Limited was one of the Development-cum-Production Partners and produced the system.",
+      "keyFacts": [
+        "Organisation conducting the test: DRDO.",
+        "Date: 5 November 2026.",
+        "Test location: Dr APJ Abdul Kalam Island off the Odisha coast.",
+        "Classification: quasi-ballistic missile.",
+        "Development: Research Centre Imarat, Hyderabad, with other DRDO laboratories.",
+        "Production partner named in the release: Bharat Dynamics Limited (BDL)."
+      ],
+      "primarySource": {
+        "sourceName": "Press Information Bureau — Ministry of Defence",
+        "sourceUrl": "https://www.pib.gov.in/PressReleaseIframePage.aspx?PRID=2333276&lang=2&reg=48"
+      },
+      "crossCheckSources": [
+        {
+          "sourceName": "DD India",
+          "sourceUrl": "https://ddindia.co.in/2026/11/drdo-successfully-flight-tests-pralay-missile-off-odisha-coast/",
+          "relationship": "Public-broadcast report; confirms the test date, location, missile classification, developer and production partner."
+        },
+        {
+          "sourceName": "India Today",
+          "sourceUrl": "https://www.indiatoday.in/india/story/drdo-pralay-quasi-ballistic-missile-flight-test-odisha-3033237-2026-11-05",
+          "relationship": "Independent news report; corroborates the test location, time and user-evaluation context. Range/payload figures are deliberately not used in this item."
+        }
+      ],
+      "editorialAssessment": {
+        "status": "pending-human-approval",
+        "reviewer": "ChatGPT research assistant — source comparison completed; not a human sign-off",
+        "checkedAt": "2026-11-08T21:00:00+05:30",
+        "checksPerformed": [
+          "Matched the test date, time, site and missile classification against PIB and DD India.",
+          "Matched the Research Centre Imarat and BDL roles against the official release and DD India.",
+          "Excluded range and payload figures because they are not needed for the fact set and are not stated in the cited primary release."
+        ],
+        "notes": [
+          "Human editor must check that the developer and production-partner roles are not interchanged."
+        ]
+      },
+      "draftMcqs": [
+        {
+          "question": "Pralay, successfully flight-tested by DRDO on 5 November 2026, is classified as which type of missile?",
+          "options": [
+            "Cruise missile",
+            "Anti-tank guided missile",
+            "Quasi-ballistic missile",
+            "Surface-to-air missile"
+          ],
+          "proposedAnswerIndex": 2,
+          "explanation": "The Ministry of Defence/PIB release explicitly describes Pralay as a quasi-ballistic missile.",
+          "answerVerification": "AI source comparison completed; human answer-key sign-off pending."
+        },
+        {
+          "question": "From which location was the 5 November 2026 Pralay flight-test conducted?",
+          "options": [
+            "Sriharikota, Andhra Pradesh",
+            "Dr APJ Abdul Kalam Island, off Odisha",
+            "Pokhran, Rajasthan",
+            "Chandipur town, Odisha"
+          ],
+          "proposedAnswerIndex": 1,
+          "explanation": "The release states that the test was conducted from Dr APJ Abdul Kalam Island off the coast of Odisha. Chandipur is where the Integrated Test Range instruments were deployed.",
+          "answerVerification": "AI source comparison completed; human answer-key sign-off pending."
+        },
+        {
+          "question": "Which DRDO establishment in Hyderabad, along with other DRDO laboratories, is named as a developer of Pralay?",
+          "options": [
+            "Research Centre Imarat",
+            "Aeronautical Development Establishment",
+            "Naval Science & Technological Laboratory",
+            "Defence Metallurgical Research Laboratory"
+          ],
+          "proposedAnswerIndex": 0,
+          "explanation": "The official release names Research Centre Imarat, Hyderabad, along with other DRDO laboratories, as the developer. Bharat Dynamics Limited is named as a production partner.",
+          "answerVerification": "AI source comparison completed; human answer-key sign-off pending."
+        }
+      ]
+    },
+    {
+      "articleId": "2026-11-07-e20-quality",
+      "publicationDate": "2026-11-07",
+      "category": "Science & Technology",
+      "headline": "MoPNG reports 893 E20 petrol samples from 27 States and UTs within the prescribed ethanol range",
+      "examTags": [
+        "SSC",
+        "RRB"
+      ],
+      "relevance": "A current fuel-standard and energy-blending fact with exact sample count, coverage and BIS standard.",
+      "summary": "In a 7 November 2026 release, the Ministry of Petroleum and Natural Gas reported that an OMC/Centre for High Technology Quality Coordination Cell exercise tested 893 E20 samples drawn from depots and retail outlets across 27 States and Union Territories. The Ministry stated that all 893 samples were within the prescribed ethanol-content range of 19–21%, tested under IS 17021, Annex C. The 893 samples comprised 330 from IOCL, 280 from BPCL and 283 from HPCL. This is a statement about the sampled set, not a claim that every retail outlet was tested.",
+      "keyFacts": [
+        "Total samples reported: 893.",
+        "Coverage: 27 States and Union Territories.",
+        "Sample split: IOCL 330; BPCL 280; HPCL 283 (sum: 893).",
+        "Reported ethanol-content range: 19–21% across the 893 samples.",
+        "Test reference: IS 17021, Annex C; BIS catalogues IS 17021:2018 as the E20 fuel specification."
+      ],
+      "primarySource": {
+        "sourceName": "Press Information Bureau — Ministry of Petroleum & Natural Gas",
+        "sourceUrl": "https://www.pib.gov.in/PressReleseDetailm.aspx?PRID=2333919&lang=1&reg=3"
+      },
+      "crossCheckSources": [
+        {
+          "sourceName": "DD India",
+          "sourceUrl": "https://ddindia.co.in/2026/11/e20-petrol-meets-prescribed-quality-standards-893-samples-across-27-states-and-uts-compliant-ministry/",
+          "relationship": "Public-broadcast report; corroborates the 893 samples, 27-State/UT coverage and reported 19–21% range."
+        },
+        {
+          "sourceName": "Bureau of Indian Standards — IS 17021:2018 standard details",
+          "sourceUrl": "https://standards.bis.gov.in/website/standard-details?encryptedId=eyJpdiI6IkE4ZzI5ckZXRUluWEhueVZwVmN4Z3c9PSIsInZhbHVlIjoiTEpzbWJaaXZmQ0xWQm0wZUZtdDBSUT09IiwibWFjIjoiMjhjNmM2NzU3NjNmOTQwNThhYWM3MWU5NjM1MmRhYjViMjNkOWMxY2E3YmY1NWUxYjRlODkxZDhlMWViNTU0OSIsInRhZyI6IiJ9",
+          "relationship": "BIS standard catalogue; verifies that IS 17021:2018 is the E20 fuel specification."
+        }
+      ],
+      "editorialAssessment": {
+        "status": "pending-human-approval",
+        "reviewer": "ChatGPT research assistant — source comparison completed; not a human sign-off",
+        "checkedAt": "2026-11-08T21:00:00+05:30",
+        "checksPerformed": [
+          "Matched the 893 total, 27-State/UT coverage and 19–21% range against PIB and DD India.",
+          "Checked that 330 + 280 + 283 equals 893.",
+          "Checked the IS 17021:2018 designation against the BIS standard catalogue.",
+          "Kept the statement explicitly attributed to the Ministry and limited to the sampled set."
+        ],
+        "notes": [
+          "Do not rewrite this as a claim that every petrol pump or every fuel batch across India was independently tested.",
+          "The source also reports 56 samples in Karnataka with a 19–20% result; this separate subset is not to be confused with the overall 893-sample 19–21% range."
+        ]
+      },
+      "draftMcqs": [
+        {
+          "question": "How many E20 petrol samples did the Ministry of Petroleum and Natural Gas report as tested in the OMC/CHT quality exercise?",
+          "options": [
+            "893",
+            "839",
+            "983",
+            "930"
+          ],
+          "proposedAnswerIndex": 0,
+          "explanation": "The Ministry's 7 November release reports 893 samples in total.",
+          "answerVerification": "AI source comparison completed; human answer-key sign-off pending."
+        },
+        {
+          "question": "Across how many States and Union Territories were the 893 E20 samples reported as collected?",
+          "options": [
+            "25",
+            "27",
+            "28",
+            "30"
+          ],
+          "proposedAnswerIndex": 1,
+          "explanation": "The release reports coverage across 27 States and Union Territories.",
+          "answerVerification": "AI source comparison completed; human answer-key sign-off pending."
+        },
+        {
+          "question": "What ethanol-content range did the Ministry report for all 893 tested E20 samples?",
+          "options": [
+            "10–15%",
+            "15–18%",
+            "19–21%",
+            "25–30%"
+          ],
+          "proposedAnswerIndex": 2,
+          "explanation": "The Ministry states that all 893 samples were within the prescribed 19–21% range. The 19–20% figure in the same release applies specifically to the 56 Karnataka samples.",
+          "answerVerification": "AI source comparison completed; human answer-key sign-off pending."
+        },
+        {
+          "question": "Which Indian Standard is identified by BIS as the specification for E20 fuel?",
+          "options": [
+            "IS 17021:2018",
+            "IS 17012:2018",
+            "IS 2796:2017",
+            "IS 15464:2004"
+          ],
+          "proposedAnswerIndex": 0,
+          "explanation": "The BIS catalogue identifies IS 17021:2018 as the E20 fuel specification. IS 2796:2017 and IS 15464 have different fuel-related scopes.",
+          "answerVerification": "AI source comparison completed; human answer-key sign-off pending."
+        }
+      ]
+    }
+  ],
+  "heldFromPublication": [
+    {
+      "item": "Exercise RAHAT MITRA (India–Myanmar tri-services HADR exercise)",
+      "reason": "The PIB release describes the exercise period as 5–6 November 2026, while Myanmar International TV reports 5–7 November 2026. The difference affects the end date, so the item is held until the official duration is clarified.",
+      "sources": [
+        "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2333709&lang=1&reg=3",
+        "https://www.myanmaritv.com/news/disaster-relief-exercise-myanmar-delegation-participates-hadr-2026-exercise"
+      ]
+    }
+  ]
+}
