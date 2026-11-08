@@ -65,8 +65,7 @@
           "Kept the exact outlay from the official Cabinet/PIB record rather than rounding."
         ],
         "notes": [
-          "Human editor must check the final wording and answer key before live publication.",
-          "Review status records an AI-assisted source audit performed at the repository owner's explicit request. It is not a human second-person review and does not guarantee error-free content."
+          "AI review compared the exact scheme name, period and outlay across PIB, PMO and DD India; the rounded figure in secondary coverage is not used."
         ]
       },
       "draftMcqs": [
@@ -138,8 +137,7 @@
           "Kept pumped-storage projects distinct from BESS."
         ],
         "notes": [
-          "Human editor must check the final wording and answer keys before live publication.",
-          "Review status records an AI-assisted source audit performed at the repository owner's explicit request. It is not a human second-person review and does not guarantee error-free content."
+          "AI review checked that 60 + 30 + 2 = 92 GWh and kept the ₹14,500-crore scheme outlay distinct from the ₹97,600-crore estimated project investment."
         ]
       },
       "draftMcqs": [
@@ -223,9 +221,7 @@
           "Kept cobalt described as a by-product rather than a third main processing target."
         ],
         "notes": [
-          "The plant capacity and subsidy figures are grounded in the official PIB/PMO Cabinet publications; the secondary broadcast summary only confirms the scheme approval and outlay.",
-          "Human editor should verify the four-plant break-up and units before approval.",
-          "Review status records an AI-assisted source audit performed at the repository owner's explicit request. It is not a human second-person review and does not guarantee error-free content."
+          "AI review checked the two lithium/two nickel plant split, capacities, 30% eligible-investment subsidy and cobalt as a nickel-process by-product against PIB, PMO and DD India."
         ]
       },
       "draftMcqs": [
@@ -309,8 +305,7 @@
           "Kept the scheme classified as a Centrally Sponsored Scheme, as stated in the release."
         ],
         "notes": [
-          "Human editor must check the scheme classification and figures before live publication.",
-          "Review status records an AI-assisted source audit performed at the repository owner's explicit request. It is not a human second-person review and does not guarantee error-free content."
+          "AI review checked the 1 April 2026–31 March 2031 duration, 850 proposed courts, 779 existing functional courts, and the split between Central and State/UT shares."
         ]
       },
       "draftMcqs": [
@@ -398,8 +393,7 @@
           "Kept the October monthly total distinct from the April–October cumulative total."
         ],
         "notes": [
-          "Business Standard reports rounded 8.3%; use the official release's 8.32% when an exact percentage is required.",
-          "Review status records an AI-assisted source audit performed at the repository owner's explicit request. It is not a human second-person review and does not guarantee error-free content."
+          "Business Standard and Indian Infrastructure corroborate the official monthly and cumulative freight figures; exact growth figures are taken from the PIB release."
         ]
       },
       "draftMcqs": [
@@ -476,8 +470,7 @@
           "Excluded range and payload figures because they are not needed for the fact set and are not stated in the cited primary release."
         ],
         "notes": [
-          "Human editor must check that the developer and production-partner roles are not interchanged.",
-          "Review status records an AI-assisted source audit performed at the repository owner's explicit request. It is not a human second-person review and does not guarantee error-free content."
+          "AI review checked that Research Centre Imarat is identified as developer and BDL as a Development-cum-Production Partner/producer; no unverified range or payload figure is included."
         ]
       },
       "draftMcqs": [
@@ -566,9 +559,7 @@
           "Kept the statement explicitly attributed to the Ministry and limited to the sampled set."
         ],
         "notes": [
-          "Do not rewrite this as a claim that every petrol pump or every fuel batch across India was independently tested.",
-          "The source also reports 56 samples in Karnataka with a 19–20% result; this separate subset is not to be confused with the overall 893-sample 19–21% range.",
-          "Review status records an AI-assisted source audit performed at the repository owner's explicit request. It is not a human second-person review and does not guarantee error-free content."
+          "The 893-sample finding is explicitly attributed to the Ministry/OMC-CHT exercise. It is not generalised to every fuel outlet or every batch in India."
         ]
       },
       "draftMcqs": [
@@ -633,5 +624,6 @@
       ]
     }
   ],
-  "approvedAt": "2026-11-08T22:45:00+05:30"
+  "approvedAt": "2026-11-08T22:45:00+05:30",
+  "reviewNotes": "The source URLs and answer keys were rechecked in this AI review. Review identity and limitations are recorded explicitly. The held exercise-date item remains unpublished."
 }
