@@ -97,3 +97,9 @@ python scripts/validate_feed.py
 ## Current editorial review queue
 
 The starter edition for **8 November 2026** is in [`review-queue/2026-11-08.json`](review-queue/2026-11-08.json), with its source trail and review history. Seven items and 20 MCQs have been published in the live feed following an AI-assisted source audit explicitly authorised by the repository owner. This is labelled as AI review, not human review. One conflicting-date story remains held. See [`review-queue/README.md`](review-queue/README.md).
+
+## App sync behaviour
+
+The importable HTML module uses this repository's live JSON feed by default. On first use it attempts an immediate sync. After that, it checks for updates once per India calendar day after **8:30 AM IST** when the module is open or reopened, with an additional 15-minute check while it remains open. It also checks when the app returns to the foreground or network connectivity returns. A manual **Sync** button remains available. The last successful feed is cached in IndexedDB for offline reading.
+
+**Background limitation:** an imported HTML topic cannot reliably run JavaScript after Tomato Math is fully closed. If the user does not open/resume the module after the daily feed is published, the new content will download on the next open/resume (or manual Sync). This is not a guaranteed Android background job.
