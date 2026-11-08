@@ -126,7 +126,7 @@ small{color:var(--muted)}.hidden{display:none!important}
       const now=new Date();
       localStorage.setItem("tm_ca_last_successful_sync",now.toISOString());
       const ist=istClock();
-      if(force || ist.hour>AUTO_SYNC_HOUR || (ist.hour===AUTO_SYNC_HOUR && ist.minute>=AUTO_SYNC_MINUTE)){
+      if(ist.hour>AUTO_SYNC_HOUR || (ist.hour===AUTO_SYNC_HOUR && ist.minute>=AUTO_SYNC_MINUTE)){
         localStorage.setItem("tm_ca_last_auto_sync_day",ist.dayKey);
       }
       setStatus("Synced · "+next.articles.length+" articles");
