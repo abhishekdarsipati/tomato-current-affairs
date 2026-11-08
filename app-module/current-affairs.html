@@ -34,6 +34,7 @@ small{color:var(--muted)}.hidden{display:none!important}
   <div class="panel">
     <div class="row" style="justify-content:space-between"><b>Daily revision</b><span id="status">Loading saved content…</span></div>
     <div class="muted" id="updated">No feed synced yet</div>
+    <div class="muted" id="autoSyncInfo">Automatic daily sync is enabled.</div>
     <div class="notice">Accuracy note: this edition was source-checked by AI at the app owner’s request. It has not had a separate human second-person review. Open the original source for important facts; report any discrepancy before relying on it for an exam.</div>
     <details style="margin-top:10px"><summary>Feed connection settings</summary>
       <p class="muted">The Tomato Current Affairs feed is preconfigured. You can replace the address here if the feed moves. The setting is saved on this device.</p>
@@ -67,6 +68,29 @@ small{color:var(--muted)}.hidden{display:none!important}
   function savedIds(){try{return JSON.parse(localStorage.getItem("tm_ca_saved")||"[]")}catch{return []}}
   function toggleSaved(id){const s=new Set(savedIds());s.has(id)?s.delete(id):s.add(id);localStorage.setItem("tm_ca_saved",JSON.stringify([...s]));render();}
   function url(){return localStorage.getItem("tm_ca_feed_url")||DEFAULT_URL;}
+  const AUTO_SYNC_HOUR = 8;
+  const AUTO_SYNC_MINUTE = 30;
+  const AUTO_SYNC_CHECK_MS = 15 * 60 * 1000;
+  let syncInProgress = false;
+  function istClock(){
+    const parts = new Intl.DateTimeFormat("en-GB", {
+      timeZone:"Asia/Kolkata", hourCycle:"h23",
+      year:"numeric", month:"2-digit", day:"2-digit",
+      hour:"2-digit", minute:"2-digit"
+    }).formatToParts(new Date());
+    const get = type => parts.find(p=>p.type===type)?.value || "00";
+    return {dayKey:get("year")+"-"+get("month")+"-"+get("day"),hour:Number(get("hour")),minute:Number(get("minute"))};
+  }
+  function isDailySyncDue(){
+    const now=istClock();
+    const afterCutoff=now.hour>AUTO_SYNC_HOUR || (now.hour===AUTO_SYNC_HOUR && now.minute>=AUTO_SYNC_MINUTE);
+    return afterCutoff && localStorage.getItem("tm_ca_last_auto_sync_day")!==now.dayKey;
+  }
+  function updateSyncInfo(){
+    const last=localStorage.getItem("tm_ca_last_successful_sync");
+    const formatted=last ? new Date(last).toLocaleString("en-IN",{timeZone:"Asia/Kolkata"}) : "Not yet synced";
+    $("autoSyncInfo").textContent="Automatic check: daily after 8:30 AM IST while the app is open or when reopened. Last successful sync: "+formatted+".";
+  }
   function setStatus(s){$("status").textContent=s;}
   function validate(data){
     if(!data || data.schemaVersion!==1 || !Array.isArray(data.articles)) throw new Error("Feed format is not supported.");
@@ -86,18 +110,42 @@ small{color:var(--muted)}.hidden{display:none!important}
     }
     return data;
   }
-  async function sync(){
+  async function sync(force=false){
     const u=url();
     if(!u){setStatus("Add your feed URL in settings");return;}
+    if(syncInProgress)return;
+    if(!navigator.onLine){setStatus("Offline — showing saved content");return;}
+    syncInProgress=true;
+    $("refresh").disabled=true;
     setStatus("Syncing…");
     try{
       const res=await fetch(u,{cache:"no-store"});
       if(!res.ok)throw new Error("Server returned "+res.status);
       const next=validate(await res.json());
-      feed=next;await cacheSet(next);setStatus("Synced · "+next.articles.length+" articles");
-      $("updated").textContent="Feed updated: "+new Date(next.generatedAt||Date.now()).toLocaleString();
+      feed=next;await cacheSet(next);
+      const now=new Date();
+      localStorage.setItem("tm_ca_last_successful_sync",now.toISOString());
+      const ist=istClock();
+      if(force || ist.hour>AUTO_SYNC_HOUR || (ist.hour===AUTO_SYNC_HOUR && ist.minute>=AUTO_SYNC_MINUTE)){
+        localStorage.setItem("tm_ca_last_auto_sync_day",ist.dayKey);
+      }
+      setStatus("Synced · "+next.articles.length+" articles");
+      $("updated").textContent="Feed content date: "+new Date(next.generatedAt||Date.now()).toLocaleString("en-IN",{timeZone:"Asia/Kolkata"});
+      updateSyncInfo();
       render();
-    }catch(e){setStatus("Offline / sync failed — showing saved content");$("updated").textContent=e.message;render();}
+    }catch(e){
+      setStatus("Sync failed — showing saved content");
+      $("updated").textContent="Could not refresh: "+e.message;
+      render();
+    }finally{
+      syncInProgress=false;
+      $("refresh").disabled=false;
+    }
+  }
+  function maybeAutoSync(){
+    if(document.visibilityState==="hidden" || !navigator.onLine || syncInProgress)return;
+    const firstSync=!localStorage.getItem("tm_ca_last_successful_sync");
+    if(firstSync || isDailySyncDue())sync(false);
   }
   function renderCategories(){
     $("categories").innerHTML=CATEGORIES.map(c=>`<button class="chip ${category===c?"active":""}" data-cat="${esc(c)}">${esc(c)}</button>`).join("");
@@ -152,10 +200,14 @@ small{color:var(--muted)}.hidden{display:none!important}
   $("showQuiz").onclick=startQuiz;
   $("showSaved").onclick=()=>{mode="articles";savedOnly=!savedOnly;render();};
   $("search").addEventListener("input",render);
-  $("refresh").onclick=sync;
+  $("refresh").onclick=()=>sync(true);
   $("saveUrl").onclick=()=>{const u=$("feedUrl").value.trim();if(u&&!/^https:\/\/.+\.json(?:\?.*)?$/.test(u)){setStatus("Please enter an HTTPS JSON feed URL.");return;}localStorage.setItem("tm_ca_feed_url",u);setStatus("Feed URL saved");sync();};
   $("feedUrl").value=url();
-  (async()=>{try{feed=validate(await cacheGet())||feed;setStatus("Saved feed loaded · "+feed.articles.length+" articles");$("updated").textContent=feed.generatedAt?"Last saved update: "+new Date(feed.generatedAt).toLocaleString():"No saved feed";}catch(e){setStatus("Ready to sync");}render();if(navigator.onLine)sync();})();
+  updateSyncInfo();
+  window.addEventListener("online",maybeAutoSync);
+  document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")maybeAutoSync();});
+  setInterval(maybeAutoSync,AUTO_SYNC_CHECK_MS);
+  (async()=>{try{feed=validate(await cacheGet())||feed;setStatus("Saved feed loaded · "+feed.articles.length+" articles");$("updated").textContent=feed.generatedAt?"Last saved feed date: "+new Date(feed.generatedAt).toLocaleString("en-IN",{timeZone:"Asia/Kolkata"}):"No saved feed";}catch(e){setStatus("Ready to sync");}render();updateSyncInfo();maybeAutoSync();})();
 })();
 </script>
 </body>
