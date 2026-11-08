@@ -21,6 +21,8 @@ input{min-width:0;flex:1;width:100%}.chips{display:flex;gap:7px;overflow:auto;pa
 #status{font-size:.82rem;color:var(--muted)}#explanation{padding:10px;background:#0f1b2c;border-radius:9px;margin-top:8px}
 .empty{text-align:center;padding:24px;color:var(--muted)}details summary{cursor:pointer;color:#bae6fd}
 small{color:var(--muted)}.hidden{display:none!important}
+.notice{border:1px solid #765b23;background:#352a16;color:#fde68a;border-radius:10px;padding:10px;font-size:.82rem;margin-top:10px}
+.facts{margin:8px 0 10px;padding-left:20px;color:#d6e0ee}.facts li{margin:3px 0}
 </style>
 </head>
 <body>
@@ -32,8 +34,9 @@ small{color:var(--muted)}.hidden{display:none!important}
   <div class="panel">
     <div class="row" style="justify-content:space-between"><b>Daily revision</b><span id="status">Loading saved content…</span></div>
     <div class="muted" id="updated">No feed synced yet</div>
+    <div class="notice">Accuracy note: this edition was source-checked by AI at the app owner’s request. It has not had a separate human second-person review. Open the original source for important facts; report any discrepancy before relying on it for an exam.</div>
     <details style="margin-top:10px"><summary>Feed connection settings</summary>
-      <p class="muted">Paste the GitHub Pages JSON address after publishing your repository. It is saved on this device.</p>
+      <p class="muted">The Tomato Current Affairs feed is preconfigured. You can replace the address here if the feed moves. The setting is saved on this device.</p>
       <div class="row"><input id="feedUrl" type="url" placeholder="https://username.github.io/repository/content/current-affairs.json"><button id="saveUrl">Save</button></div>
     </details>
   </div>
@@ -51,7 +54,7 @@ small{color:var(--muted)}.hidden{display:none!important}
   "use strict";
   const DB_NAME = "tomato-current-affairs";
   const STORE = "cache";
-  const DEFAULT_URL = "";
+  const DEFAULT_URL = "https://abhishekdarsipati.github.io/tomato-current-affairs/content/current-affairs.json";
   const CATEGORIES = ["All","National Affairs","International Affairs","Economy","Science & Technology","Defence","Environment","Sports","Awards & Appointments"];
   let feed = {schemaVersion:1,generatedAt:null,articles:[]};
   let category = "All", examFilter = "All Exams", mode = "articles", savedOnly = false, quizQueue = [], qi = 0, score = 0;
@@ -109,6 +112,8 @@ small{color:var(--muted)}.hidden{display:none!important}
     $("articles").innerHTML=items.length?items.map(a=>`<article class="article">
       <div class="meta">${esc(a.date)} · ${esc(a.category)}</div><h3>${esc(a.title)}</h3>
       <div class="summary">${esc(a.summary)}</div>
+      ${a.examRelevance?`<p class="muted">${esc(a.examRelevance)}</p>`:""}
+      ${Array.isArray(a.keyFacts)&&a.keyFacts.length?`<b class="meta">Important exam facts</b><ul class="facts">${a.keyFacts.map(f=>`<li>${esc(f)}</li>`).join("")}</ul>`:""}
       <div>${(a.examTags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>
       <div class="row" style="justify-content:space-between;margin-top:10px">
         <small>Source: ${esc(a.sourceName)}</small><button data-save="${esc(a.id)}">${savedIds().includes(a.id)?"★ Saved":"☆ Save"}</button>
