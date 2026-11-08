@@ -41,7 +41,7 @@ See [`EDITORIAL_STANDARD.md`](EDITORIAL_STANDARD.md) for the mandatory article a
 
 Edit `content/current-affairs.json` and commit the change. The GitHub Actions workflow runs the validator before deploying.
 
-Each article requires an explicit `editorialReview` record. It must either include at least one independent, authoritative cross-check source on a different host from the primary source, or a specific `singleSourceJustification` explaining why the issuing authority is the only suitable verifier. Each MCQ also requires `reviewed: true` after its answer key and explanation have been checked.
+Each article requires an explicit `editorialReview` record. It must include at least one authoritative cross-check source on a different host from the primary source, or a specific `singleSourceJustification` explaining why the issuing authority is the only suitable verifier. The reviewer must be identified truthfully: human review must name the human reviewer; owner-authorised AI review must identify the AI reviewer and state that it is not a human second-person check. Each MCQ requires `reviewed: true` only after its answer key and explanation have been checked individually.
 
 Illustrative structure only — the example contains placeholders and is **not** a publishable news item:
 
@@ -80,7 +80,7 @@ Illustrative structure only — the example contains placeholders and is **not**
 
 ## What the automation does — and does not do
 
-The workflow validates the feed's data structure and required review metadata, then deploys it. **It does not independently verify whether a news claim is true, whether sources are genuinely authoritative, or whether the keyed MCQ answer is correct.** Those are editorial responsibilities. Setting `status: "approved"` or `reviewed: true` is a human sign-off, not an AI or CI fact-check. GitHub Actions passing is not a guarantee of factual correctness.
+The workflow validates the feed's data structure and required review metadata, then deploys it. **It does not independently verify whether a news claim is true, whether sources are genuinely authoritative, or whether the keyed MCQ answer is correct.** Those checks must be performed by the named reviewer. A review may be human or explicitly owner-authorised AI review, but AI approval must be labelled as AI review and never presented as human sign-off. GitHub Actions passing is not a guarantee of factual correctness.
 
 This first version deliberately has no autonomous scraping or automatic fact publication. A trustworthy curated feed is better than a fast feed containing errors. A future collection assistant can propose candidate stories, but nothing should enter the live feed until it passes the editorial checks above.
 
@@ -96,4 +96,4 @@ python scripts/validate_feed.py
 
 ## Current editorial review queue
 
-The researched starter edition for **8 November 2026** is stored in [`review-queue/2026-11-08.json`](review-queue/2026-11-08.json). It contains seven candidates and 20 draft MCQs for the 4–7 November coverage window. These candidates are **not yet in the live feed**: they are marked `pending-human-approval` so the editor can verify the source details and solve every MCQ before publication. See [`review-queue/README.md`](review-queue/README.md) for the approval process.
+The starter edition for **8 November 2026** is in [`review-queue/2026-11-08.json`](review-queue/2026-11-08.json), with its source trail and review history. Seven items and 20 MCQs have been published in the live feed following an AI-assisted source audit explicitly authorised by the repository owner. This is labelled as AI review, not human review. One conflicting-date story remains held. See [`review-queue/README.md`](review-queue/README.md).
